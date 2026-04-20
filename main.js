@@ -65,16 +65,18 @@ const bookingToggle = document.getElementById('booking-toggle');
 const bookingOptions = document.getElementById('booking-options');
 
 if (bookingToggle && bookingOptions) {
+  // Enforce a known-good initial state regardless of what the HTML says
+  bookingOptions.setAttribute('hidden', '');
+  bookingToggle.setAttribute('aria-expanded', 'false');
+
   bookingToggle.addEventListener('click', function () {
-    const isExpanded = bookingToggle.getAttribute('aria-expanded') === 'true';
-    bookingToggle.setAttribute('aria-expanded', String(!isExpanded));
-    if (isExpanded) {
-      bookingOptions.setAttribute('hidden', '');
-    } else {
+    const isHidden = bookingOptions.hasAttribute('hidden');
+    if (isHidden) {
       bookingOptions.removeAttribute('hidden');
-      setTimeout(function () {
-        bookingOptions.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 50);
+      bookingToggle.setAttribute('aria-expanded', 'true');
+    } else {
+      bookingOptions.setAttribute('hidden', '');
+      bookingToggle.setAttribute('aria-expanded', 'false');
     }
   });
 }
