@@ -207,11 +207,14 @@ section { padding: 32px 0; }
 }
 
 .authority-label {
-  font-size: 0.88rem;
-  color: var(--off-white);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--white);
   text-align: center;
-  letter-spacing: 0.01em;
-  line-height: 1.65;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
   margin-bottom: 20px;
 }
 
